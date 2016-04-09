@@ -1,0 +1,104 @@
+body {
+    background-color: #fcf8e3;
+}
+
+/********************
+        TABLE
+********************/
+
+.datacykle-table {
+    max-width: 550px;
+    margin: 0 auto;
+}
+
+.table-holder {
+    vertical-align: middle;
+    height: 100%;
+    width: 100%;
+}
+
+.datacykle-table-body {
+    /*line-height: 15px;*/
+}
+
+.datacykle-table tbody > tr > td {
+    vertical-align: middle;
+    line-height: 15px;
+}
+
+.datacykle-table-icons {
+    display: block;
+}
+
+.datacykle-table-icons i {
+    margin: 0 5px;
+}
+
+.datacykle-table-icons i:hover {
+    cursor: pointer;
+}
+
+.page-header.center-align {
+    background: url(../assets/img/house-header-background.jpg);
+    background-position: right bottom, left top;
+    background-repeat: no-repeat;
+    margin-top: 0;
+    padding-top: 1px;
+}
+
+.center-align {
+    text-align: center;
+    vertical-align: middle;
+}
+
+.heops-img {
+    width: 50%;
+    margin: 0 auto 25px;
+}
+
+.heops-img img {
+    max-width: 800px;
+    min-width: 200px;
+    width: 100%;
+}
+.heops-img-block {
+    display: block;
+    width: 100%;
+}
+
+.heops-img-description {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 15px;
+}
+
+.holder {
+    margin: 20px;
+}
+
+.page-header a {
+    color: #080808;
+    text-decoration: none;
+}
+
+/********************
+      UI SWITCH
+********************/
+
+.switch-holder {
+    text-align: center;
+    height: 100%;
+    width: 100%;
+}
+
+.switch-holder {
+    padding-top: 5px;
+}
+
+.switch {
+    zoom: 70%;
+}
+
+.switch.checked {
+    background-color: darkgreen;
+}
