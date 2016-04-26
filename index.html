@@ -1,47 +1,58 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="myApp">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
-    <link rel="stylesheet" href="vendor/css/font-awesome.min.css">
-    <link rel="stylesheet" href="vendor/css/ngDialog.min.css">
-    <link rel="stylesheet" href="vendor/js/angular-ui-switch/angular-ui-switch.min.css">
-    <link rel="stylesheet" href="shared/styles.css">
-    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>-->
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="bower_components/ng-dialog/css/ngDialog.min.css">
+  <link rel="stylesheet" href="bower_components/angular-ui-switch/angular-ui-switch.min.css">
+  <link rel="stylesheet" href="bower_components/AngularJS-Toaster/toaster.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Jura:300,400,500,600&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="shared/styles.css">
+  <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>-->
 
-    <title>Heops</title>
+  <title>Heops</title>
 </head>
 <body>
 
-    <div class="page-header center-align"><h1><a href="#">HEOPS</a></h1></div>
-
+<div class="page-body">
+  <div class="page-header center-align">
+    <div class="logo-heops"><img src="assets/img/heops-logo.png" ui-sref="main"></img></div>
     <nav class="btn-block center-block center-align">
-        <div class="btn-group">
-            <a class="btn btn-primary" ui-sref="datacykle">Таблиця датциклів та перемикачів</a>
-            <a class="btn btn-default" ui-sref="floorone">Перший поверх</a>
-            <a class="btn btn-default" ui-sref="floortwo">Другий поверх</a>
-        </div>
+      <div class="btn-group main-page-nav-btns">
+        <a class="btn btn-warning" ui-sref="datacykle">Таблиця датциклів та перемикачів</a>
+        <a class="btn btn-success" ui-sref="floorone">Перший поверх</a>
+        <a class="btn btn-success" ui-sref="floortwo">Другий поверх</a>
+      </div>
     </nav>
+  </div>
 
-    <div ui-view></div>
+  <div ui-view></div>
 
-    <footer class="panel-footer">
-        <div class="center-align">
-            <span>Made by Oleksandr</span>
-        </div>
-    </footer>
+  <footer class="panel-footer">
+    <div class="center-align">
+      <span>Made by Oleksandr</span>
+    </div>
+  </footer>
 
-    <script src="vendor/js/angular.min.js"></script>
-    <script src="vendor/js/bootstrap.min.js"></script>
-    <script src="vendor/js/angular-route.min.js"></script>
-    <script src="vendor/js/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="vendor/js/angular-ui-switch/angular-ui-switch.min.js"></script>
-    <script src="vendor/js/ngDialog.min.js"></script>
-    <script src="app.js"></script>
-    <script src="datacykle/datacykle.controller.js"></script>
-    <script src="floorone/floorone.controller.js"></script>
-    <script src="floortwo/floortwo.controller.js"></script>
+  <toaster-container></toaster-container>
+
+</div>
+
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="vendor/js/angular-route.min.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/angular-ui-switch/angular-ui-switch.min.js"></script>
+<script src="bower_components/ng-dialog/js/ngDialog.min.js"></script>
+<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+<script src="bower_components/AngularJS-Toaster/toaster.min.js"></script>
+<script src="app.js"></script>
+<script src="datacykle/datacykle.controller.js"></script>
+<script src="floorone/floorone.controller.js"></script>
+<script src="floortwo/floortwo.controller.js"></script>
 </body>
 </html>

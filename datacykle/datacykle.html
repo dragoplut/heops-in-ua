@@ -1,25 +1,35 @@
 <div class="center-block holder">
-    <div class="center-align"><p>{{ dataCykle.header }}</p></div>
-    <div class="table-holder">
-        <table class="table datacykle-table">
-            <thead class="datacykle-table-head">
-                <tr>
-                    <th class="center-align">#</th>
-                    <th class="center-align">Дата</th>
-                    <th class="center-align">Опис</th>
-                    <th class="center-align">Перемикач</th>
-                    <th class="center-align">Дія</th>
-                </tr>
-            </thead>
-            <tbody class="datacykle-table-body">
-                <tr ng-repeat="row in dataCykle.evetsList">
-                    <td>{{$index+1}}</td>
-                    <td>{{row.date | date}}</td>
-                    <td>{{row.title}}</td>
-                    <td><div class="switch-holder"><switch name="{{$index+1000}}" ng-model="row.eventSwitch" disabled="false" class="green"></switch></div></td>
-                    <td><div class="datacykle-table-icons"><i class="fa fa-file-text-o" title="Деталі"></i><i class="fa fa-pencil-square-o" title="Редагувати"></i><i class="fa fa-trash-o" title="Видалити"></i></div></td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+  <div class="center-align"><p>{{ dataCykle.header }}</p></div>
+  <div class="btn-group-sm center-align">
+    <button class="btn btn-default" ng-click="dataCykle.testToaster()">Toaster</button>
+  </div>
+  <div class="table-holder datacykle-table-holder">
+    <table class="table datacykle-table">
+      <thead class="datacykle-table-head">
+      <tr>
+        <th class="center-align">#</th>
+        <th class="center-align">Дата</th>
+        <th class="center-align">Опис</th>
+        <th class="center-align">Перемикач</th>
+        <th class="center-align">Дія</th>
+      </tr>
+      </thead>
+      <tbody class="datacykle-table-body">
+      <tr ng-repeat="row in dataCykle.evetsList">
+        <td>{{$index+1}}</td>
+        <td>{{row.date | date}}</td>
+        <td class="left-align">{{row.title}}</td>
+        <td>
+          <div class="switch-holder">
+            <switch name="{{$index+1000}}" ng-model="row.eventSwitch" disabled="false" class="green"></switch>
+          </div>
+        </td>
+        <td>
+          <div class="datacykle-table-icons"><i class="fa fa-file-text-o" title="Деталі" ng-click="dataCykle.activeEvent ? dataCykle.activeEvent=false : dataCykle.activeEvent=true"></i><i
+              class="fa fa-pencil-square-o" title="Редагувати"></i><i class="fa fa-trash-o" title="Видалити"></i></div>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

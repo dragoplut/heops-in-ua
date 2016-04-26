@@ -5,7 +5,7 @@ angular.module('myApp.floorOne', ['ui.router'])
         $stateProvider
             .state('floorone', {
                 url: '/floorone',
-                templateUrl: 'floorone/floorone.html',
+                templateUrl: 'floorone/floorone.html',  // heops-in-ua/
                 controller: 'FloorOneController',
                 controllerAs: 'floorOne'
             })

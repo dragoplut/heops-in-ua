@@ -1,84 +1,168 @@
 body {
-    background-color: #fcf8e3;
+  background: linear-gradient(to right, #ffffff, #dff0f8, #ffffff);
+  text-align: center;
+  font-family: 'Jura', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
 }
+
+.logo-heops {
+  background-color: #252519;
+  background-position: center center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  opacity: 0.65;
+  margin: 15px auto;
+  height: 100px;
+  width: 300px;
+}
+
+.logo-heops:hover {
+  cursor: pointer;
+}
+
+.logo-heops img {
+  position: relative;
+  top: -100px;
+  height: 300px;
+  width: 300px;
+}
+
+.page-body {
+  background: linear-gradient(to top, #ffffff, #a9dba9);
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+
+/********************
+      MAIN PAGE
+********************/
+
+.main-page-nav-btns .btn {
+  border-style: none;
+  border-radius: 0;
+  margin-bottom: 10px;
+}
+
+.main-page-right-column {
+  background-color: #222222;
+  display: inline-block;
+  float: right;
+  margin: 0 0 0 15px;
+  padding: 15px;
+  opacity: 0.4;
+  height: auto;
+  min-height: 100px;
+  width: 180px;
+}
+
+.main-page-content-holder {
+  display: inline-block;
+  position: relative;
+  width: 960px;
+}
+
+/********************
+    DATA CYKLE PAGE
+********************/
+
+
 
 /********************
         TABLE
 ********************/
 
 .datacykle-table {
-    max-width: 550px;
-    margin: 0 auto;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .table-holder {
-    vertical-align: middle;
-    height: 100%;
-    width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  height: 100%;
+  width: auto;
 }
 
 .datacykle-table-body {
-    /*line-height: 15px;*/
+  /*line-height: 15px;*/
 }
 
 .datacykle-table tbody > tr > td {
-    vertical-align: middle;
-    line-height: 15px;
+  font-family: 'Jura', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  vertical-align: middle;
+  line-height: 15px;
 }
 
 .datacykle-table-icons {
-    display: block;
+  display: inline-block;
+  min-width: 80px;
 }
 
 .datacykle-table-icons i {
-    margin: 0 5px;
+  display: inline-block;
+  font-size: 14px;
+  margin: 0 5px;
 }
 
 .datacykle-table-icons i:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .page-header.center-align {
-    background: url(../assets/img/house-header-background.jpg);
-    background-position: right bottom, left top;
-    background-repeat: no-repeat;
-    margin-top: 0;
-    padding-top: 1px;
+  background: url(../assets/img/house-header-background.jpg);
+  background-position: right bottom, left top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 1px;
 }
 
 .center-align {
-    text-align: center;
-    vertical-align: middle;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.left-align {
+  text-align: left;
+  vertical-align: middle;
 }
 
 .heops-img {
-    width: 50%;
-    margin: 0 auto 25px;
+  width: auto;
+  margin: 0 auto 25px;
 }
 
 .heops-img img {
-    max-width: 800px;
-    min-width: 200px;
-    width: 100%;
+  max-width: 800px;
+  min-width: 200px;
+  width: 100%;
 }
+
 .heops-img-block {
-    display: block;
-    width: 100%;
+  display: inline-block;
+  width: auto;
 }
 
 .heops-img-description {
-    font-size: 16px;
-    font-weight: 500;
-    margin: 15px;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 15px;
 }
 
 .holder {
-    margin: 20px;
+  margin: 20px 0;
 }
 
 .page-header a {
-    color: #080808;
-    text-decoration: none;
+  color: #080808;
+  text-decoration: none;
+  margin-bottom: 0;
 }
 
 /********************
@@ -86,19 +170,19 @@ body {
 ********************/
 
 .switch-holder {
-    text-align: center;
-    height: 100%;
-    width: 100%;
+  text-align: center;
+  height: 100%;
+  width: 100%;
 }
 
 .switch-holder {
-    padding-top: 5px;
+  padding-top: 5px;
 }
 
 .switch {
-    zoom: 70%;
+  zoom: 70%;
 }
 
 .switch.checked {
-    background-color: darkgreen;
+  background-color: forestgreen;
 }
