@@ -1,35 +1,42 @@
 'use strict';
 
-var myApp = angular.module('myApp', [
-  'ui.router',
-  'ngDialog',
-  'myApp.dataCykle',
-  'myApp.floorOne',
-  'myApp.floorTwo'
-]);
+angular.module('myApp', [
+      'ui.router',
+      'ngDialog',
+      'uiSwitch',
+      'toaster',
+      'ngAnimate',
+      'myApp.services',
+      'myApp.directives',
+      'myApp.dataCycle',
+      'myApp.floorOne',
+      'myApp.floorTwo'
+    ])
 
+    .config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
+      function ($stateProvider, $urlRouterProvider, $locationProvider) {
+        $urlRouterProvider.otherwise('/main');
+        $stateProvider
+            .state('main', {
+              //abstract: true,
+              url: '/main',
+              templateUrl: 'shared/layout.html', // heops-in-ua/
+              controller: ['$scope', 'dataService', function ($scope, dataService) {
+                $scope.historyLog = dataService.historyLog;
+              }]
+            });
+        //$locationProvider.html5Mode({
+        //  enabled: true,
+        //  requireBase: false
+        //});
+      }
+    ])
 
-myApp.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
-  function ($stateProvider, $urlRouterProvider, $locationProvider) {
-    $urlRouterProvider.otherwise('/main');
-    $stateProvider
-        .state('main', {
-          //abstract: true,
-          url: '/main',
-          templateUrl: 'shared/layout.html', // heops-in-ua/
-          controller: ['$scope', function ($scope, dataCykle) {
-            $scope.historyLog = dataCykle.historyLog;
-          }]
-        });
-    //$locationProvider.html5Mode({
-    //  enabled: true,
-    //  requireBase: false
-    //});
-  }
-]);
+    .run(['$rootScope', '$state', '$stateParams',
+      function ($rootScope, $state, $stateParams) {
+        console.info('myApp.run');
+      }
+    ]);
 
-myApp.run(['$rootScope', '$state', '$stateParams',
-  function ($rootScope, $state, $stateParams) {
-    console.info('myApp.run');
-  }
-]);
+angular.module('myApp.services', []);
+angular.module('myApp.directives', []);
