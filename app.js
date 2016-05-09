@@ -54,7 +54,7 @@ angular.module('myApp', [
 
     .run(['$rootScope', '$state', '$stateParams',
       function ($rootScope, $state, $scope, $stateParams) {
-        console.info('myApp.run');
+        //console.info('myApp.run');
       }
     ]);
 
