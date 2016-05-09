@@ -20,12 +20,7 @@
     "protractor": "",
     "update-index-async": "node -e \"require('shelljs/global'); sed('-i', /\\/\\/@@NG_LOADER_START@@[\\s\\S]*\\/\\/@@NG_LOADER_END@@/, '//@@NG_LOADER_START@@\\n' + sed(/sourceMappingURL=angular-loader.min.js.map/,'sourceMappingURL=node_modules/angular-loader/angular-loader.min.js.map','app/node_modules/angular-loader/angular-loader.min.js') + '\\n//@@NG_LOADER_END@@', 'app/index-async.html');\""
   },
-  "dependencies": {
-    "angular-loader": "^1.5.5",
-    "lodash": "^4.12.0",
-    "restangular": "^1.5.2",
-    "toaster": "^0.1.2"
-  },
+  "dependencies": {},
   "engines": {
     "node": "0.10.25"
   }
