@@ -2,7 +2,22 @@
 
 angular.module('myApp.services')
 
-    .factory('dataService', function ($q) {
+    .factory('dataService', ['$q', '$location', 'Restangular', function ($q, $location, Restangular) {
+      var API_KEY = '?apiKey=uuRNSH5q_v3QcAfoI7SHeJYf8zmj5_gM';
+      var notes = [
+        {id: 101, message: 'Замінити пробки в лічильнику.'},
+        {id: 102, message: 'Усунути збої в роботі термостата котла.'}
+      ];
+
+      var getUsers = function () {
+        console.log('getUsers 1');
+        return Restangular.all('user' + API_KEY).getList().then(function done(response) {
+          console.log('getUsers response: ', response);
+          return response.plain();
+        }).catch(function (err) {
+          return $q.reject(err);
+        });
+      };
 
       var historyBase = [];
       var historyLog = function (eventInfo, action) {
@@ -18,6 +33,7 @@ angular.module('myApp.services')
           }
         }
       };
+
       var eventsList = function () {
         var defer = $q.defer();
         var output = [];
@@ -39,9 +55,28 @@ angular.module('myApp.services')
         return defer.promise;
       };
 
-      return {
-        eventsList: eventsList,
-        historyLog: historyLog
+      var notesList = function (action, note) {
+        var defer = $q.defer();
+        if (action && note) {
+          if (action === 'add') {
+            notes.push(note);
+          } else if (action === 'remove') {
+            for (var i = 0; i < notes.length; i++) {
+              if (notes[i].id === note.id) {
+                notes.splice(i, 1);
+              }
+            }
+          }
+        }
+        defer.resolve(notes);
+        return defer.promise;
       };
 
-    });
+      return {
+        eventsList: eventsList,
+        historyLog: historyLog,
+        getUsers: getUsers,
+        notesList: notesList
+      };
+
+    }]);

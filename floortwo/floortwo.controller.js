@@ -10,8 +10,17 @@ angular.module('myApp.floorTwo', ['ui.router'])
             controllerAs: 'floorTwo'
           })
     }])
-    .controller('FloorTwoController', [function () {
+    .controller('FloorTwoController', function (dataService) {
       var self = this;
-      self.header = 'Floor Two';
+      self.header = 'Другий поверх.';
+
+      init();
+
+      function init() {
+        dataService.eventsList().then(function done(response) {
+          self.eventsList = response;
+        });
+      }
+
       //console.info(self.header);
-    }]);
+    });

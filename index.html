@@ -12,6 +12,7 @@
   <link href='https://fonts.googleapis.com/css?family=Jura:300,400,500,600&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="shared/styles.css">
   <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
   <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>-->
 
   <title>Heops</title>
@@ -19,22 +20,24 @@
 <body>
 
 <div class="page-body">
-  <div class="page-header center-align">
+  <div class="page-header center-align page-header-bg2">
     <div class="logo-heops"><img src="assets/img/heops-logo.png" ui-sref="main"></img></div>
     <nav class="btn-block center-block center-align">
       <div class="btn-group main-page-nav-btns">
-        <a class="btn btn-warning" ui-sref="data-cycle">Таблиця датциклів та перемикачів</a>
+        <a class="btn btn-success" ui-sref="data-cycle">Таблиця датциклів та перемикачів</a>
         <a class="btn btn-success" ui-sref="floor-one">Перший поверх</a>
         <a class="btn btn-success" ui-sref="floor-two">Другий поверх</a>
       </div>
     </nav>
   </div>
 
+  <div class="divider"></div>
+
   <div ui-view></div>
 
   <footer class="panel-footer">
     <div class="center-align">
-      <span>Made by Oleksandr</span>
+      <span>Made by Oleksandr. 2016</span>
     </div>
   </footer>
 
@@ -43,6 +46,8 @@
 </div>
 
 <script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/restangular/dist/restangular.min.js"></script>
+<script src="bower_components/lodash/dist/lodash.min.js"></script>
 <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="vendor/js/angular-route.min.js"></script>
 <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>

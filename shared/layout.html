@@ -1,14 +1,15 @@
 <div class="main-page-content-holder">
-  <div class="heops-img-block center-align">
-
-    <p class="fa heops-img-description">Фото, як машина часу. Спогади безцінні.</p>
-
-    <div class="heops-img">
-      <img class="img-rounded" src="assets/img/heops-min.jpg" title="Андрій і Олександр зі щукою.">
-    </div>
+  <div class="holder heops-img-block heops-img center-align floor-img img-rounded">
+      <span class="center-align universal-block-header">Фото або інші графічні матеріали.</span>
+      <img class="img-rounded" src="{{ bigImg }}" title="{{ title }}">
   </div>
-  <div ng-if="dataService.historyLog.length" class="main-page-right-column">
-
+  <div class="main-page-right-column">
+    <button class="btn-sm btn-success" ng-click="bigImg='assets/img/Var_1.png'; title = title1" title="Будинок">
+      <i class="fa fa-home"></i>
+    </button>
+    <button class="btn-sm btn-success" ng-click="bigImg='assets/img/heops-min.jpg'; title = title2" title="Фото зі щукою">
+      <i class="fa fa-file-picture-o"></i>
+    </button>
   </div>
 </div>
 <!--<div ui-view></div>-->

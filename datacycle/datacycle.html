@@ -1,14 +1,14 @@
 <div class="center-block holder">
-  <div class="center-align"><p>{{ dataCycle.header }}</p></div>
-  <div class="btn-group-sm center-align">
+  <div class="btn-group-sm center-align" ng-hide="true">
     <button class="btn btn-default" ng-click="dataCycle.testToaster()">Toaster</button>
   </div>
-  <div class="table-holder datacykle-table-holder">
+  <div class="table-holder datacykle-table-holder img-rounded">
+    <span class="center-align universal-block-header">{{ dataCycle.header }}</span>
     <table class="table datacykle-table">
       <thead class="datacykle-table-head">
       <tr>
         <th class="center-align">#</th>
-        <th class="center-align">Дата</th>
+        <th class="center-align col-sm-3">Дата</th>
         <th class="center-align">Опис</th>
         <th class="center-align">Перемикач</th>
         <th class="center-align">Дія</th>
@@ -17,7 +17,7 @@
       <tbody class="datacykle-table-body">
       <tr ng-repeat="row in dataCycle.evetsList">
         <td>{{$index+1}}</td>
-        <td>{{row.date | date}}</td>
+        <td class="col-sm-3">{{row.date | date}}</td>
         <td class="left-align">{{row.title}}</td>
         <td>
           <div class="switch-holder">

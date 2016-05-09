@@ -10,11 +10,20 @@ angular.module('myApp.dataCycle', ['ui.router', 'uiSwitch', 'toaster', 'ngAnimat
             controllerAs: 'dataCycle'
           })
     }])
-    .controller('DataCycleController', function (toaster, dataService) {
+    .controller('DataCycleController', function ($q, toaster, dataService) {
       var self = this;
       self.header = 'Data Cycle';
       self.activeEvent = false;
       self.historyLog = dataService.historyLog();
+
+      self.showUsers = function () {
+        dataService.getUsers().then(function done(response) {
+          console.log('showUsers: ', response);
+        }).catch(function (err) {
+          console.log('err: ', err);
+          $q.reject(err);
+        });
+      };
 
       init();
 

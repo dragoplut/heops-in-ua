@@ -1,6 +1,10 @@
-<div class="center-block holder">
-    <div class="center-align"><p>{{floorTwo.header}}</p></div>
-    <div class="holder center-align">
-        <p>Місце для розміщення плану другого поверху будинку із пристроями вказаними на ньому.</p>
-    </div>
+<div class="holder device-attach-block">
+  <span class="center-align universal-block-header">Доступні пристрої</span>
+  <div>
+    <span ng-repeat="row in floorTwo.eventsList" class="device-list">{{row.title}}</span>
+  </div>
+</div>
+<div class="holder center-align img-rounded floor-img">
+  <span class="center-align universal-block-header">{{floorTwo.header}}</span>
+  <img class="center-align img-rounded" src="assets/img/2-floor-min.png">
 </div>

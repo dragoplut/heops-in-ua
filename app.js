@@ -6,6 +6,7 @@ angular.module('myApp', [
       'uiSwitch',
       'toaster',
       'ngAnimate',
+      'restangular',
       'myApp.services',
       'myApp.directives',
       'myApp.dataCycle',
@@ -21,8 +22,12 @@ angular.module('myApp', [
               //abstract: true,
               url: '/main',
               templateUrl: 'shared/layout.html', // heops-in-ua/
-              controller: ['$scope', 'dataService', function ($scope, dataService) {
+              controller: ['$scope', '$location', 'dataService', function ($scope, $location, dataService) {
                 $scope.historyLog = dataService.historyLog;
+                $scope.bigImg = 'assets/img/Var_1.png';
+                $scope.title1 = '3D план будинку.';
+                $scope.title2 = 'Андрій і Олександр зі щукою.';
+                $scope.title = $scope.title1;
               }]
             });
         //$locationProvider.html5Mode({
@@ -32,8 +37,23 @@ angular.module('myApp', [
       }
     ])
 
+    .config(function (RestangularProvider) {
+      RestangularProvider.setBaseUrl('https://heops-api');
+
+      RestangularProvider.addResponseInterceptor(function (data, operation, what, url, response) {
+        return response.data.data;
+      });
+
+      RestangularProvider.setRestangularFields({
+        id: "_id",
+        route: "restangularRoute",
+        selfLink: "self.href"
+      });
+    })
+
+
     .run(['$rootScope', '$state', '$stateParams',
-      function ($rootScope, $state, $stateParams) {
+      function ($rootScope, $state, $scope, $stateParams) {
         console.info('myApp.run');
       }
     ]);
