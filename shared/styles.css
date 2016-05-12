@@ -264,7 +264,7 @@ body {
 }
 
 .add-message-plus {
-  margin: 5px 7px;
+  margin: 5px 12px;
 }
 
 .add-note-input {
@@ -273,7 +273,7 @@ body {
 }
 
 .device-list.note-list {
-  padding-right: 17px;
+  padding-right: 22px;
   position: relative;
 }
 

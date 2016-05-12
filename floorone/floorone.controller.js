@@ -12,31 +12,40 @@ angular.module('myApp.floorOne', ['ui.router'])
     }])
     .controller('FloorOneController', function (dataService, toaster) {
       var self = this;
+
       self.header = 'Перший поверх.';
       self.minus = false;
-      self.showNoteForm = false;
-      self.newNote = '';
 
-      init();
-
-      function init() {
-        dataService.eventsList().then(function done(response) {
-          self.eventsList = response;
+      self.memoSave = function (newMemo) {
+        dataService.memoSave(newMemo).then(function done() {
+          toaster.pop({
+            type: 'success',
+            title: 'Додано',
+            body: 'Замітку додано!',
+            showCloseButton: true
+          });
+          resetNewMemo();
+          memoGet();
+        }).catch(function () {
+          toaster.pop({
+            type: 'error',
+            title: 'Помилка',
+            body: 'Сталась прикра помилка. Замітку НЕ додано!',
+            showCloseButton: true
+          });
         });
-        dataService.notesList().then(function done(response) {
-          self.notesList = response;
-        });
-      }
+      };
 
-      self.noteAction = function (action, note) {
-        dataService.notesList(action, note).then(function done(resp) {
+      self.memoRemove = function (id) {
+        dataService.memoRemove(id).then(function done() {
           toaster.pop({
             type: 'success',
             title: 'Видалено',
             body: 'Замітку видалено!',
             showCloseButton: true
           });
-        }).catch(function (err) {
+          memoGet();
+        }).catch(function () {
           toaster.pop({
             type: 'error',
             title: 'Помилка',
@@ -46,26 +55,29 @@ angular.module('myApp.floorOne', ['ui.router'])
         });
       };
 
-      self.addNote = function (action, newNote) {
-        var newId = self.notesList[self.notesList.length-1].id + 1;
-        var note = {id: newId, message: newNote};
-        dataService.notesList(action, note).then(function done(resp) {
-          toaster.pop({
-            type: 'success',
-            title: 'Додано',
-            body: 'Замітку додано!',
-            showCloseButton: true
-          });
-        }).catch(function (err) {
-          toaster.pop({
-            type: 'error',
-            title: 'Помилка',
-            body: 'Сталась прикра помилка. Замітку НЕ додано!',
-            showCloseButton: true
-          });
-        });
-        self.newNote = '';
-      };
+      init();
 
-      //console.info(self.header);
+      function init() {
+        eventsList();
+        memoGet();
+        resetNewMemo();
+      }
+
+      function resetNewMemo () {
+        self.showNoteForm = false;
+        self.newNote = '';
+      }
+
+      function eventsList () {
+        dataService.eventsList().then(function done(response) {
+          self.eventsList = response;
+        });
+      }
+
+      function memoGet () {
+        dataService.memoGet().then(function done(response) {
+          self.notesList = response;
+        });
+      }
+
     });

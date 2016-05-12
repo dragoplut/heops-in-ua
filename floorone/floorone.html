@@ -10,14 +10,14 @@
     <div ng-if="floorOne.showNoteForm">
       <textarea class="input-medium add-note-input" ng-model="floorOne.newNote" type="text"></textarea>
       <div class="btn-group-sm">
-        <input class="btn btn-success" type="button" ng-click="floorOne.addNote('add', floorOne.newNote)" value="Додати">
+        <input class="btn btn-success" type="button" ng-click="floorOne.memoSave(floorOne.newNote)" value="Додати">
         <input class="btn btn-default" type="button" ng-click="floorOne.showNoteForm = false; floorOne.newNote = ''" value="Відміна">
       </div>
     </div>
     <div>
-      <span ng-repeat="row in floorOne.notesList" class="device-list note-list" ng-mouseover="floorOne.minus=row.id"
+      <span ng-repeat="row in floorOne.notesList" class="device-list note-list" ng-mouseover="floorOne.minus=row._id"
             ng-mouseleave="floorOne.minus=false">{{row.message}}
-        <i class="fa fa-minus-square pull-right remove-message-minus" ng-click="floorOne.noteAction('remove', row)" ng-if="floorOne.minus===row.id" title="Видалити"></i>
+        <i class="fa fa-minus-square pull-right remove-message-minus" ng-click="floorOne.memoRemove(row._id)" ng-if="floorOne.minus===row._id" title="Видалити"></i>
       </span>
     </div>
     <i class="fa fa-plus-square pull-right add-message-plus" ng-click="floorOne.showNoteForm = true" title="Додати"></i>

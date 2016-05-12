@@ -3,7 +3,9 @@
 angular.module('myApp.services')
 
     .factory('dataService', ['$q', '$location', 'Restangular', function ($q, $location, Restangular) {
-      var API_KEY = '?apiKey=uuRNSH5q_v3QcAfoI7SHeJYf8zmj5_gM';
+
+      var memoRestangular = Restangular.one('memo');
+
       var notes = [
         {id: 101, message: 'Замінити пробки в лічильнику.'},
         {id: 102, message: 'Усунути збої в роботі термостата котла.'}
@@ -55,28 +57,37 @@ angular.module('myApp.services')
         return defer.promise;
       };
 
-      var notesList = function (action, note) {
-        var defer = $q.defer();
-        if (action && note) {
-          if (action === 'add') {
-            notes.push(note);
-          } else if (action === 'remove') {
-            for (var i = 0; i < notes.length; i++) {
-              if (notes[i].id === note.id) {
-                notes.splice(i, 1);
-              }
-            }
-          }
+      var memoGet = function () {
+        return memoRestangular.customGET().then(function done(resp) {
+          return resp.plain();
+        });
+      };
+
+      var memoSave = function (newMemo) {
+        var newData = {
+          message: newMemo
+        };
+        return memoRestangular.customPOST(newData)
+      };
+
+      var memoRemove = function (id) {
+        if (!id) {
+          return $q.reject();
         }
-        defer.resolve(notes);
-        return defer.promise;
+        return memoRestangular.one(id).remove().then(function done(resp) {
+          return resp;
+        }).catch(function () {
+          return $q.reject();
+        });
       };
 
       return {
         eventsList: eventsList,
         historyLog: historyLog,
         getUsers: getUsers,
-        notesList: notesList
+        memoGet: memoGet,
+        memoSave: memoSave,
+        memoRemove: memoRemove
       };
 
     }]);

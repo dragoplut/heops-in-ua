@@ -38,7 +38,7 @@ angular.module('myApp', [
     ])
 
     .config(function (RestangularProvider) {
-      RestangularProvider.setBaseUrl('https://heops-api');
+      RestangularProvider.setBaseUrl('https://heops-smart-home.herokuapp.com/');
 
       RestangularProvider.addResponseInterceptor(function (data, operation, what, url, response) {
         return response.data.data;
