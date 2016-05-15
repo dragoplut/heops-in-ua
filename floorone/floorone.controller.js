@@ -17,6 +17,7 @@ angular.module('myApp.floorOne', ['ui.router'])
       self.minus = false;
 
       self.memoSave = function (newMemo) {
+        console.log('self.memoSave newMemo:', newMemo);
         dataService.memoSave(newMemo).then(function done() {
           toaster.pop({
             type: 'success',

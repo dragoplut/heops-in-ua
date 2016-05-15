@@ -5,6 +5,7 @@ angular.module('myApp', [
       'ngDialog',
       'uiSwitch',
       'toaster',
+      'angular-loading-bar',
       'ngAnimate',
       'restangular',
       'myApp.services',

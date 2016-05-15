@@ -119,7 +119,7 @@ body {
 
 .datacykle-table-icons i {
   display: inline-block;
-  font-size: 14px;
+  font-size: 18px;
   margin: 0 5px;
 }
 
@@ -246,6 +246,28 @@ body {
 .device-attach-block .device-list:hover {
   background: #a9dba9;
   cursor: pointer;
+}
+
+.device-is-available {
+  /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+  border-radius: 50%;
+  font-size: 18px;
+}
+
+.device-is-available:hover {
+  cursor: pointer;
+}
+
+.device-on {
+  color: green;
+}
+
+.device-off {
+  color: red;
+}
+
+.device-unchecked {
+  color: darkgrey;
 }
 
 .universal-block-header {

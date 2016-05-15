@@ -15,18 +15,43 @@
       </tr>
       </thead>
       <tbody class="datacykle-table-body">
-      <tr ng-repeat="row in dataCycle.evetsList">
-        <td>{{$index+1}}</td>
-        <td class="col-sm-3">{{row.date | date}}</td>
-        <td class="left-align">{{row.title}}</td>
+      <tr ng-repeat="event in dataCycle.evetsList">
+        <td>{{ $index+1 }}</td>
+        <td class="col-sm-3">{{ event.updateDate | date }}</td>
+        <td class="left-align" title="{{ event.description }}">{{ event.title }}</td>
         <td>
           <div class="switch-holder">
-            <switch name="{{$index+1000}}" ng-model="row.eventSwitch" disabled="false" class="green"></switch>
+            <switch name="{{ $index+1000 }}" ng-change="dataCycle.changeEventStatus(event)" ng-model="event.status" class="green"></switch>
           </div>
         </td>
         <td>
           <div class="datacykle-table-icons"><i class="fa fa-file-text-o" title="Деталі" ng-click="dataCycle.activeEvent ? dataCycle.activeEvent=false : dataCycle.activeEvent=true"></i><i
-              class="fa fa-pencil-square-o" title="Редагувати"></i><i class="fa fa-trash-o" title="Видалити"></i></div>
+              class="fa fa-pencil-square-o" ng-click="dataCycle.updateForm(event._id)" title="Редагувати"></i><i class="fa fa-trash-o" title="Видалити"></i></div>
+        </td>
+      <tr>
+      <tr ng-repeat="event in dataCycle.evetsList" ng-show="dataCycle.showForm===event._id">
+        <td colspan="5" align="center">
+          <form class="event-edit-form">
+            <div class="form-group">
+              <input class="pull-left event-title-input" ng-model="event.title" type="text" placeholder="Назва" required>
+              <input class="pull-left event-description-input" ng-model="event.description" type="text" placeholder="Короткий опис" required>
+              <table class="table">
+                <tbody class="datacykle-table-body">
+                <tr ng-repeat="device in dataCycle.devicesList">
+                  <td>{{ $index+1 }}</td>
+                  <td class="left-align">{{ device.type }}</td>
+                  <td class="left-align" title="{{ device.description }}">{{ device.title }}</td>
+                  <td>
+                    <i class="fa fa-power-off center-align device-is-available" ng-class="device.available ? 'device-on' : 'device-off'"></i>
+                  </td>
+                  <td>
+                    <i class="fa fa-check-circle center-align device-is-available" ng-click="dataCycle.setUnsetLocation(device, dataCycle.locationId)" ng-class="device.parentLocationId ? 'device-on' : 'device-unchecked'"></i>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </form>
         </td>
       </tr>
       </tbody>
