@@ -1,0 +1,49 @@
+<span class="center-align universal-block-header">{{ title }}</span>
+<div class="event-edit-dialog-content">
+  <form class="event-edit-form ngdialog-content">
+    <div class="form-group">
+      <div class="form-group event-inputs-block">
+        <label for="title-input" class="event-input-label">Назва</label>
+        <input class="form-control event-input" ng-model="event.title" id="title-input" type="text" placeholder="Назва" required>
+      </div>
+      <div class="form-group">
+        <label for="description-input" class="event-input-label">Опис</label>
+        <input class="form-control event-input" ng-model="event.description" id="description-input" type="text" placeholder="Короткий опис" required>
+      </div>
+      <h4>Таблиця прив’язаних та доступних пристроїв</h4>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Тип</th>
+          <th>Опис</th>
+          <th>Статус</th>
+          <th>Прив’язаний</th>
+        </tr>
+        </thead>
+        <tbody class="datacykle-table-body">
+        <tr ng-repeat="device in devicesList">
+          <td>{{ $index+1 }}</td>
+          <td class="left-align">{{ device.type }}</td>
+          <td class="left-align" title="{{ device.description }}">{{ device.title }}</td>
+          <td>
+            <i class="fa fa-power-off center-align device-is-available"
+               ng-class="device.available ? 'device-on' : 'device-off'"></i>
+          </td>
+          <td>
+            <i class="fa fa-check-circle center-align device-is-available"
+               ng-click="setUnsetLocation(device, event)"
+               ng-class="device.parentLocationId ? 'device-on' : 'device-unchecked'"></i>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="ngdialog-buttons">
+      <button class="btn btn-success ngdialog-button universal-shadow" ng-click="closeThisDialog()">Так</button>
+      <button class="btn btn-default ngdialog-button universal-shadow" ng-click="cancelEdit(); closeThisDialog()">
+        Відміна
+      </button>
+    </div>
+  </form>
+</div>

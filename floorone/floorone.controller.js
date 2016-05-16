@@ -59,7 +59,7 @@ angular.module('myApp.floorOne', ['ui.router'])
       init();
 
       function init() {
-        eventsList();
+        getDevices();
         memoGet();
         resetNewMemo();
       }
@@ -73,6 +73,12 @@ angular.module('myApp.floorOne', ['ui.router'])
         dataService.eventsList().then(function done(response) {
           self.eventsList = response;
         });
+      }
+
+      function getDevices () {
+        dataService.getDevices().then(function done(response) {
+          self.devicesList = response;
+        })
       }
 
       function memoGet () {

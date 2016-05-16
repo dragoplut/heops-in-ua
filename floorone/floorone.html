@@ -2,7 +2,10 @@
   <div class="holder device-attach-block">
     <span class="center-align universal-block-header">Доступні пристрої</span>
     <div>
-      <span ng-repeat="row in floorOne.eventsList" class="device-list">{{row.title}}</span>
+      <span ng-repeat="device in floorOne.devicesList" class="device-list" title="{{ device.description }}">
+        <i class="fa fa-power-off pull-left device-is-available" ng-class="device.available ? 'device-on' : 'device-off'"></i>
+        {{device.title}}
+      </span>
     </div>
   </div>
   <div class="holder device-attach-block">
@@ -17,10 +20,10 @@
     <div>
       <span ng-repeat="row in floorOne.notesList" class="device-list note-list" ng-mouseover="floorOne.minus=row._id"
             ng-mouseleave="floorOne.minus=false">{{row.message}}
-        <i class="fa fa-minus-square pull-right remove-message-minus" ng-click="floorOne.memoRemove(row._id)" ng-if="floorOne.minus===row._id" title="Видалити"></i>
+        <i class="fa fa-minus-square pull-right remove-message-minus device-on" ng-click="floorOne.memoRemove(row._id)" ng-if="floorOne.minus===row._id" title="Видалити"></i>
       </span>
     </div>
-    <i class="fa fa-plus-square pull-right add-message-plus" ng-click="floorOne.showNoteForm = true" title="Додати"></i>
+    <i class="fa fa-plus-square pull-right add-message-plus device-on" ng-click="floorOne.showNoteForm = true" title="Додати"></i>
   </div>
 </div>
 <div class="holder center-align img-rounded floor-img">

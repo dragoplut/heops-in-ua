@@ -115,6 +115,7 @@ body {
 .datacykle-table-icons {
   display: inline-block;
   min-width: 80px;
+  position: relative;
 }
 
 .datacykle-table-icons i {
@@ -125,6 +126,15 @@ body {
 
 .datacykle-table-icons i:hover {
   cursor: pointer;
+}
+
+/********************
+    GENERAL BLOCK
+********************/
+
+.ngdialog.ngdialog-theme-default.edit-event-dialog .ngdialog-content {
+  padding: 0;
+  width: 550px;
 }
 
 .page-header.center-align {
@@ -143,6 +153,10 @@ body {
 
 .page-header-bg2 {
   background: url(../assets/img/banner_img.jpg);
+}
+
+.universal-shadow {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .center-align {
@@ -199,6 +213,63 @@ body {
 }
 
 /********************
+    EVENTS BLOCK
+********************/
+
+.event-confirm-btn {
+  border-style: none;
+  border-radius: 50%;
+  position: absolute;
+  left: 110px;
+  top: -4px;
+  height: 30px;
+  width: 30px;
+}
+
+.event-confirm-btn i {
+  font-size: 18px;
+  margin: 3px 0 0 0;
+}
+
+.event-confirm-btn:last-child {
+  left: 150px;
+}
+
+.event-confirm-btn.event-create-icon {
+  left: 350px;
+  top: 2px;
+}
+
+.event-create-icon:hover {
+  cursor: pointer;
+}
+
+.event-edit-dialog-content {
+  margin: 15px;
+  padding: 15px;
+}
+
+.event-edit-form input{
+  display: inline-block;
+  margin: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.event-input {
+  float: right;
+  width: 85%;
+}
+
+.event-inputs-block {
+  display: block;
+}
+
+.event-input-label {
+  padding-top: 10px;
+}
+
+/********************
     DEVICES BLOCK
 ********************/
 
@@ -208,8 +279,8 @@ body {
   width: 250px;
 }
 
-.device-attach-block-holder i {
-  color: forestgreen;
+.device-attach-block-holder .device-is-available {
+  margin: 2px 10px 0 0;
 }
 
 .device-attach-block-holder i:hover {
@@ -259,7 +330,7 @@ body {
 }
 
 .device-on {
-  color: green;
+  color: forestgreen;
 }
 
 .device-off {
@@ -276,6 +347,7 @@ body {
   background: #f7e1b5;
   display: block;
   padding: 7px 0;
+  position: relative;
   height: 35px;
 }
 
@@ -297,6 +369,19 @@ body {
 .device-list.note-list {
   padding-right: 22px;
   position: relative;
+}
+
+/******************
+   LOADING BAR
+******************/
+
+#loading-bar .bar {
+  background: darkgreen;
+}
+
+#loading-bar-spinner .spinner-icon {
+  border-top-color:  darkgreen;
+  border-left-color: darkgreen;
 }
 
 /********************
