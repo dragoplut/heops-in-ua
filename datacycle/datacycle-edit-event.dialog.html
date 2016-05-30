@@ -10,8 +10,8 @@
         <label for="description-input" class="event-input-label">Опис</label>
         <input class="form-control event-input" ng-model="event.description" id="description-input" type="text" placeholder="Короткий опис" required>
       </div>
-      <h4>Таблиця прив’язаних та доступних пристроїв</h4>
-      <table class="table">
+      <h4 ng-if="event._id">Таблиця прив’язаних та доступних пристроїв</h4>
+      <table class="table" ng-if="event._id">
         <thead>
         <tr>
           <th>#</th>
@@ -41,7 +41,7 @@
     </div>
     <div class="ngdialog-buttons">
       <button class="btn btn-success ngdialog-button universal-shadow" ng-if="event._id" ng-click="closeThisDialog()">Так</button>
-      <button class="btn btn-success ngdialog-button universal-shadow" ng-if="!event._id" ng-click="confirm()">Створити</button>
+      <button class="btn btn-success ngdialog-button universal-shadow" ng-if="!event._id" ng-click="confirm(event)">Створити</button>
       <button class="btn btn-default ngdialog-button universal-shadow" ng-click="cancelEdit(); closeThisDialog()">
         Відміна
       </button>

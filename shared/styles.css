@@ -97,6 +97,10 @@ body {
   background: #f8f8f8;
 }
 
+.datacykle-table-holder .universal-block-header:hover {
+  cursor: pointer;
+}
+
 .datacykle-table-body {
   /*line-height: 15px;*/
 }
@@ -192,6 +196,7 @@ body {
 .holder {
   display: inline-block;
   margin: 20px 0;
+  position: relative;
 }
 
 .page-header a {
@@ -233,8 +238,8 @@ body {
 }
 
 .event-confirm-btn.event-create-icon {
-  left: 350px;
-  top: 2px;
+  left: 107px;
+  top: -33px;
 }
 
 .event-create-icon:hover {
@@ -246,7 +251,7 @@ body {
   padding: 15px;
 }
 
-.datacykle-table-head tr > td {
+.datacykle-table thead > tr > th {
   position: relative;
 }
 

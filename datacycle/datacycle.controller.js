@@ -10,7 +10,7 @@ angular.module('myApp.dataCycle', ['ui.router', 'uiSwitch', 'toaster', 'ngAnimat
             controllerAs: 'dataCycle'
           })
     }])
-    .controller('DataCycleController', function ($q, ngDialog, toaster, dataService) {
+    .controller('DataCycleController', function ($window, $q, ngDialog, toaster, dataService) {
       var self = this;
       self.header = 'Події та пристрої.';
       self.title = {
@@ -94,7 +94,7 @@ angular.module('myApp.dataCycle', ['ui.router', 'uiSwitch', 'toaster', 'ngAnimat
       };
 
       self.setUnsetLocation = function (device, event) {
-        console.log(event.title, device.title, event);
+        //console.log(event.title, device.title, event);
         for (var i = 0; i < self.changedDevices.length; i++) {
           if (self.changedDevices[i]._id == device._id) {
             self.changedDevices.splice(i, 1);
@@ -133,14 +133,44 @@ angular.module('myApp.dataCycle', ['ui.router', 'uiSwitch', 'toaster', 'ngAnimat
           template: 'datacycle/datacycle-edit-event.dialog.html',
           className: 'ngdialog-theme-default edit-event-dialog',
           showClose: false,
-          controller: ['$scope', function ($scope) {
+          controller: ['$scope', function ($scope, $window) {
             $scope.title = title;
             $scope.event = event;
-            $scope.devicesList = self.devicesList;
+            $scope.devicesList = [];
+            if (event && event._id) {
+              dataService.getUnusedDevices().then(function done(resp) {
+                for (var i = 0; i < resp.length; i++) {
+                  $scope.devicesList.push(resp[i]);
+                }
+              });
+              dataService.getUserDevice(event).then(function done(resp) {
+                for (var i = 0; i < resp.length; i++) {
+                  $scope.devicesList.push(resp[i]);
+                }
+              });
+            }
             $scope.setUnsetLocation = function (device, activeEvent) {
               self.setUnsetLocation(device, activeEvent);
             };
-            $scope.confirm = function () {
+            $scope.confirm = function (newEvent) {
+              dataService.saveEvent(newEvent).then(function done(resp) {
+                ngDialog.close();
+                toaster.pop({
+                  type: 'success',
+                  title: 'Створено!',
+                  body: '"' + newEvent.title + '" успішно додано в базу!',
+                  timeout: 3500
+                });
+                self.cancelEdit();
+                console.log(resp);
+              }).catch(function (err) {
+                toaster.pop({
+                  type: 'warning',
+                  title: 'Прикра помилка.',
+                  body: 'Подію не створено! ' + $window._.get(err, 'data.error.message', ''),
+                  timeout: 3500
+                });
+              });
             };
             $scope.cancelEdit = function () {
               self.cancelEdit();
@@ -153,17 +183,19 @@ angular.module('myApp.dataCycle', ['ui.router', 'uiSwitch', 'toaster', 'ngAnimat
         ngDialog.open({
           template: 'shared/ok-cancel.dialog.html',
           className: 'ngdialog-theme-default',
-          controller: ['$scope', function ($scope) {
+          showClose: false,
+          controller: ['$scope', function ($scope, $window) {
             $scope.title = 'Ви справді хочете видалити "' + event.title + '"?';
             $scope.confirm = function () {
               dataService.removeEvent(event._id).then(function done() {
-                self.cancelEdit();
+                ngDialog.close();
                 toaster.pop({
                   type: 'success',
                   title: 'Видалено',
                   body: '"' + event.title + '" успішно видалено!',
                   timeout: 3500
-                })
+                });
+                self.cancelEdit();
               }).catch(function (err) {
                 toaster.pop({
                   type: 'warning',

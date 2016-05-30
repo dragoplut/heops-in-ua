@@ -1,6 +1,6 @@
 <div class="center-block holder">
   <div class="table-holder datacykle-table-holder img-rounded">
-    <span class="center-align universal-block-header" ng-click="dataCycle.showOptions=!dataCycle.showOptions">
+    <span class="center-align universal-block-header" title="Створити" ng-click="dataCycle.showOptions=!dataCycle.showOptions">
       {{ dataCycle.header }}
       <!--<i class="fa fa-plus-circle event-create-icon" ng-if="dataCycle.showOptions" title="Створити..."></i>-->
     </span>
@@ -13,7 +13,7 @@
         <th class="center-align">Перемикач</th>
         <th class="center-align">
           Дія
-          <button class="btn btn-xs btn-success event-confirm-btn event-create-icon" ng-if="dataCycle.showOptions" ng-click="dataCycle.editEventDialog(event, dataCycle.title.create)">
+          <button class="btn btn-xs btn-success event-confirm-btn event-create-icon universal-shadow" ng-if="dataCycle.showOptions" ng-click="dataCycle.editEventDialog(event, dataCycle.title.create)">
             <i class="fa fa-plus-circle" title="Створити"></i>
           </button>
         </th>

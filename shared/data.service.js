@@ -79,11 +79,30 @@ angular.module('myApp.services')
         });
       };
 
+      var getUnusedDevices = function () {
+        return devicesRestangular.one('unused').customGET().then(function done(resp) {
+          return resp;
+        }).catch(function (err) {
+          return err;
+        });
+      };
+
       var getOneDevice = function (deviceId) {
         if (!deviceId) {
           return $q.reject();
         }
         return devicesRestangular.one(deviceId).customGET().then(function done(resp) {
+          return resp;
+        }).catch(function (err) {
+          return err;
+        });
+      };
+
+      var getUserDevice = function (user) {
+        if (!user._id) {
+          return $q.reject();
+        }
+        return devicesRestangular.one('user').one(user._id).customGET().then(function done(resp) {
           return resp;
         }).catch(function (err) {
           return err;
@@ -197,7 +216,9 @@ angular.module('myApp.services')
         updateEvent: updateEvent,
         removeEvent: removeEvent,
         getDevices: getDevices,
+        getUnusedDevices: getUnusedDevices,
         getOneDevice: getOneDevice,
+        getUserDevice: getUserDevice,
         saveDevice: saveDevice,
         updateDevice: updateDevice,
         removeDevice: removeDevice,

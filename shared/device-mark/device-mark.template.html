@@ -1,0 +1,5 @@
+<div class="device-mark-block">
+  <div class="device-mark" ng-repeat="device in deviceList" id="mark{{ device._id }}" title="{{ device.description }}" ng-class="device.positionOnPlan" ondrop="setCoordinates(this)" ng-click="showDetails=!showDetails" draggable="true">
+    <div class="device-mark-details"></div>
+  </div>
+</div>

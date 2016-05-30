@@ -1,0 +1,30 @@
+.device-mark-block {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.device-mark {
+  background-color: #00A000;
+  border-radius: 50%;
+  border: 1px solid #3c3c3c;
+  position: absolute;
+  left: 15px;
+  top: 15px;
+  height: 20px;
+  width: 20px;
+}
+
+.device-mark-details {
+  background-color: #3c3c3c;
+  border-radius: 7px;
+  border: 1px solid #000000;
+  color: #ffffff;
+  font-size: 12px;
+  opacity: 0.6;
+  position: absolute;
+  text-align: left;
+  vertical-align: middle;
+  height: auto;
+  width: 70px;
+}
