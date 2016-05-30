@@ -132,6 +132,7 @@ angular.module('myApp.dataCycle', ['ui.router', 'uiSwitch', 'toaster', 'ngAnimat
         ngDialog.open({
           template: 'datacycle/datacycle-edit-event.dialog.html',
           className: 'ngdialog-theme-default edit-event-dialog',
+          showClose: false,
           controller: ['$scope', function ($scope) {
             $scope.title = title;
             $scope.event = event;

@@ -34,7 +34,6 @@ body {
   margin: 0 auto;
 }
 
-
 /********************
       MAIN PAGE
 ********************/
@@ -76,8 +75,6 @@ body {
 /********************
     DATA CYKLE PAGE
 ********************/
-
-
 
 /********************
         TABLE
@@ -220,7 +217,7 @@ body {
   border-style: none;
   border-radius: 50%;
   position: absolute;
-  left: 110px;
+  left: 100px;
   top: -4px;
   height: 30px;
   width: 30px;
@@ -232,7 +229,7 @@ body {
 }
 
 .event-confirm-btn:last-child {
-  left: 150px;
+  left: 140px;
 }
 
 .event-confirm-btn.event-create-icon {
@@ -249,7 +246,11 @@ body {
   padding: 15px;
 }
 
-.event-edit-form input{
+.datacykle-table-head tr > td {
+  position: relative;
+}
+
+.event-edit-form input {
   display: inline-block;
   margin: 5px;
   padding-left: 5px;
@@ -276,7 +277,7 @@ body {
 .device-attach-block-holder {
   float: left;
   display: inline-block;
-  width: 250px;
+  width: 280px;
 }
 
 .device-attach-block-holder .device-is-available {
@@ -286,7 +287,6 @@ body {
 .device-attach-block-holder i:hover {
   cursor: pointer;
 }
-
 
 .device-attach-block {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -361,6 +361,20 @@ body {
   margin: 5px 12px;
 }
 
+.add-note-block {
+  position: relative;
+}
+
+.add-note-block .event-confirm-btn {
+  left: 260px;
+  top: 10px;
+}
+
+.add-note-block .event-confirm-btn:last-child {
+  left: 300px;
+}
+
+
 .add-note-input {
   margin: 5px;
   width: 230px;
@@ -380,7 +394,7 @@ body {
 }
 
 #loading-bar-spinner .spinner-icon {
-  border-top-color:  darkgreen;
+  border-top-color: darkgreen;
   border-left-color: darkgreen;
 }
 

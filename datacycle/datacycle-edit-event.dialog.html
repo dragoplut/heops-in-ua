@@ -40,7 +40,8 @@
       </table>
     </div>
     <div class="ngdialog-buttons">
-      <button class="btn btn-success ngdialog-button universal-shadow" ng-click="closeThisDialog()">Так</button>
+      <button class="btn btn-success ngdialog-button universal-shadow" ng-if="event._id" ng-click="closeThisDialog()">Так</button>
+      <button class="btn btn-success ngdialog-button universal-shadow" ng-if="!event._id" ng-click="confirm()">Створити</button>
       <button class="btn btn-default ngdialog-button universal-shadow" ng-click="cancelEdit(); closeThisDialog()">
         Відміна
       </button>

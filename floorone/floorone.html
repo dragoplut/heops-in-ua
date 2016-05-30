@@ -10,12 +10,20 @@
   </div>
   <div class="holder device-attach-block">
     <span class="center-align universal-block-header">Замітки</span>
-    <div ng-if="floorOne.showNoteForm">
+    <div ng-if="floorOne.showNoteForm" class="add-note-block">
       <textarea class="input-medium add-note-input" ng-model="floorOne.newNote" type="text"></textarea>
-      <div class="btn-group-sm">
-        <input class="btn btn-success" type="button" ng-click="floorOne.memoSave(floorOne.newNote)" value="Додати">
-        <input class="btn btn-default" type="button" ng-click="floorOne.showNoteForm = false; floorOne.newNote = ''" value="Відміна">
-      </div>
+      <!--<div class="btn-group-sm">-->
+        <!--<input class="btn btn-success" type="button" ng-click="floorOne.memoSave(floorOne.newNote)" value="Додати">-->
+        <!--<input class="btn btn-default" type="button" ng-click="floorOne.showNoteForm = false; floorOne.newNote = ''" value="Відміна">-->
+      <!--</div>-->
+
+      <button class="btn btn-xs btn-success event-confirm-btn universal-shadow" ng-click="floorOne.memoSave(floorOne.newNote)">
+        <i class="fa fa-check-circle" title="Додати"></i>
+      </button>
+      <button class="btn btn-xs btn-default event-confirm-btn universal-shadow" ng-click="floorOne.showNoteForm = false; floorOne.newNote = ''">
+        <i class="fa fa-times-circle" title="Відміна"></i>
+      </button>
+
     </div>
     <div>
       <span ng-repeat="row in floorOne.notesList" class="device-list note-list" ng-mouseover="floorOne.minus=row._id"
