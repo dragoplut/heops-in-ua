@@ -2,7 +2,7 @@
   <div class="holder device-attach-block">
     <span class="center-align universal-block-header">Доступні пристрої</span>
     <div>
-      <span ng-repeat="device in floorOne.devicesList" class="device-list" title="{{ device.description }}">
+      <span ng-repeat="device in floorOne.devicesList" ng-mouseover="floorOne.detailsShow(device)" ng-mouseleave="floorOne.detailsHide()" class="device-list" title="{{ device.description }}">
         <i class="fa fa-power-off pull-left device-is-available" ng-class="device.available ? 'device-on' : 'device-off'"></i>
         {{device.title}}
       </span>
@@ -29,8 +29,14 @@
     <i class="fa fa-plus-square pull-right add-message-plus device-on" ng-click="floorOne.showNoteForm = true" title="Додати"></i>
   </div>
 </div>
-<div class="holder center-align img-rounded floor-img">
+<div class="holder center-align img-rounded floor-img floor-one-block">
+  <device-mark data-value="device" ng-repeat="device in floorOne.devicesList" ng-mouseup="floorOne.deviceChanged(device);"></device-mark>
   <span class="center-align universal-block-header">{{floorOne.header}}</span>
+  <button class="btn btn-xs btn-success event-confirm-btn universal-shadow okBtn" ng-if="floorOne.changedDevices.length" ng-click="floorOne.updateDevices()">
+    <i class="fa fa-check-circle" title="Підтвердити зміни"></i>
+  </button>
+  <button class="btn btn-xs btn-default event-confirm-btn universal-shadow cancelBtn" ng-if="floorOne.changedDevices.length" ng-click="floorOne.cancelEdit()">
+    <i class="fa fa-times-circle" title="Відмінити зміни"></i>
+  </button>
   <img class="center-align img-rounded" src="assets/img/1-floor-min.png">
-  <device-mark data-value="[0,1,2,3]"></device-mark>
 </div>

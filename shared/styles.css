@@ -221,16 +221,22 @@ body {
 .event-confirm-btn {
   border-style: none;
   border-radius: 50%;
+  padding: 0 0 0 1px;
   position: absolute;
   left: 100px;
+  outline: 0 !important;
   top: -4px;
+  text-align: center;
+  vertical-align: middle;
   height: 30px;
   width: 30px;
 }
 
 .event-confirm-btn i {
-  font-size: 18px;
-  margin: 3px 0 0 0;
+  font-size: 28px;
+  margin: 0 auto;
+  outline: 0;
+  /*padding-left: 1px;*/
 }
 
 .event-confirm-btn:last-child {
@@ -389,6 +395,22 @@ body {
   padding-right: 22px;
   position: relative;
 }
+
+/******************
+    FLOOR ONE
+******************/
+
+
+.floor-one-block .okBtn {
+  left: 470px;
+  top: 1px;
+}
+
+.floor-one-block .cancelBtn {
+  left: 510px;
+  top: 1px;
+}
+
 
 /******************
    LOADING BAR

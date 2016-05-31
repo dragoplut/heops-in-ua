@@ -1,5 +1,11 @@
-<div class="device-mark-block">
-  <div class="device-mark" ng-repeat="device in deviceList" id="mark{{ device._id }}" title="{{ device.description }}" ng-class="device.positionOnPlan" ondrop="setCoordinates(this)" ng-click="showDetails=!showDetails" draggable="true">
-    <div class="device-mark-details"></div>
+<div class="device-mark-block" ng-mouseup="setCoordinates()">
+  <div class="device-mark universal-shadow" ng-class="device.status ? 'mark-on' : 'mark-off'" id="{{ 'mark' + device._id }}" title="{{ device.description }}" draggable="true">
+    <span>{{ markTitle | uppercase }}</span>
+  </div>
+  <div class="device-mark-details universal-shadow" ng-if="showDetails">
+    <h5 class="center-align">{{ device.title }}</h5>
+    <span>{{ device.description }}</span><br>
+    <span>статус: {{ device.status }}</span><br>
+    <span>значення: {{ device.value }}</span>
   </div>
 </div>

@@ -10,11 +10,24 @@ angular.module('myApp.floorOne', ['ui.router'])
             controllerAs: 'floorOne'
           })
     }])
-    .controller('FloorOneController', function (dataService, toaster) {
+    .controller('FloorOneController', function ($q, $rootScope, $scope, $window,
+                                                toaster,
+                                                dataService) {
       var self = this;
 
       self.header = 'Перший поверх.';
       self.minus = false;
+      self.changedDevices = [];
+
+      self.deviceChanged = function (device) {
+        for (var i = 0; i < self.changedDevices.length; i++) {
+          if (self.changedDevices[i]._id == device._id) {
+            self.changedDevices.splice(i, 1);
+          }
+        }
+        self.changedDevices.push(device);
+        console.log(self.changedDevices);
+      };
 
       self.memoSave = function (newMemo) {
         console.log('self.memoSave newMemo:', newMemo);
@@ -55,6 +68,53 @@ angular.module('myApp.floorOne', ['ui.router'])
           });
         });
       };
+
+      self.updateDevices = function () {
+        var errMessage = false;
+        var defer = $q.defer();
+        if (self.changedDevices.length) {
+          for (var i = 0; i < self.changedDevices.length; i++) {
+            dataService.updateDevice(self.changedDevices[i]).then(function done(resp) {
+              if (i === self.changedDevices.length) {
+                defer.resolve(resp);
+              }
+            }).catch(function (err) {
+              toaster.pop({
+                type: 'warning',
+                title: 'Сталась помилка.',
+                body: 'При збереженні! ' + $window._.get(err, 'data.error.message', ''),
+                timeout: 3500
+              });
+              errMessage = true;
+              return defer.reject(err)
+            });
+          }
+        }
+        if (!errMessage) {
+          toaster.pop({
+            type: 'success',
+            title: 'Створено!',
+            body: '"' + newEvent.title + '" успішно додано в базу!',
+            timeout: 3500
+          });
+        }
+        return defer.promise;
+      };
+
+      self.detailsShow = function (device) {
+        //console.log(device.title);
+        $rootScope.$broadcast('markDetailsShow', {data: device});
+      };
+
+      self.detailsHide = function () {
+        $rootScope.$broadcast('markDetailsHide');
+      };
+
+      self.cancelEdit = function () {
+        self.changedDevices = [];
+        getDevices();
+      };
+
 
       init();
 

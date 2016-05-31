@@ -1,30 +1,63 @@
 .device-mark-block {
   position: absolute;
-  height: 100%;
-  width: 100%;
+  /*height: 100%;*/
+  /*width: 100%;*/
+  /*z-index: 9999;*/
 }
 
 .device-mark {
   background-color: #00A000;
   border-radius: 50%;
   border: 1px solid #3c3c3c;
+  cursor: pointer;
+  padding: 0;
   position: absolute;
-  left: 15px;
-  top: 15px;
+  opacity: 0.8;
   height: 20px;
   width: 20px;
 }
 
+.device-mark span {
+  display: inline-block;
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 18px;
+  opacity: 1;
+  padding-bottom: 2px;
+  padding-left: 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
 .device-mark-details {
-  background-color: #3c3c3c;
+  background-color: forestgreen;
   border-radius: 7px;
-  border: 1px solid #000000;
+  border: none;
   color: #ffffff;
-  font-size: 12px;
-  opacity: 0.6;
+  font-size: 13px;
+  font-weight: 600;
+  margin-left: 25px;
+  opacity: 0.95;
+  padding: 5px 10px;
   position: absolute;
   text-align: left;
   vertical-align: middle;
-  height: auto;
-  width: 70px;
+  min-height: 15px;
+  width: 150px;
+  z-index: 99999999;
+}
+
+.device-mark-details h5 {
+  color: #000000;
+  margin: 5px auto;
+}
+
+.mark-on {
+  background-color: forestgreen;
+  color: black;
+}
+
+.mark-off {
+  background-color: red;
+  color: yellowgreen;
 }
